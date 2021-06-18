@@ -5,8 +5,8 @@ export default {
     calendarEndDay: "20210627",
     targetDay: "20210624",
 
-    edit: 20, // 予約変更する人の割合 | 区間 [0, 100) かつ (edit + cancel) < 1
-    cancel: 10, //予約キャンセルする人の割合 | 区間 [0, 100) かつ (edit + cancel) < 1
+    edit: 20, // 予約変更する人の割合 | 区間 [0, 100) かつ (edit + cancel) < 100
+    cancel: 10, //予約キャンセルする人の割合 | 区間 [0, 100) かつ (edit + cancel) < 100
 
     verbose: false, // デバッグログ
 };
