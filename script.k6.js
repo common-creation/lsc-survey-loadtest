@@ -9,16 +9,7 @@ const baseUrl = `https://${apiGatewayPrefix}.execute-api.ap-northeast-1.amazonaw
 
 // ほぼES5.1なのでobjectのspreadは使えない
 export const options = Object.assign({}, {
-    // scenarios: {
-    //     constant_request_rate: {
-    //         executor: 'constant-arrival-rate',
-    //         rate: 111,
-    //         timeUnit: '1s',
-    //         duration: '1m',
-    //         preAllocatedVUs: 111,
-    //         maxVUs: 333,
-    //     },
-    // },
+    // tagのthrethresholdを0以上にしておくと、APIエンドポイントごとの統計を取得できる
     thresholds: {
         "http_req_duration{trace:/survey-configs/getItem}": ["max>=0"],
         "http_req_duration{trace:/calendars/item_info/all}": ["max>=0"],
@@ -110,11 +101,11 @@ function register(context, iterData, modifyOldItem = null) {
         surveyId,
         itemKey: targetSurveySchema.itemKey,
         userId: dummyUserId,
-        from: null, // ?
-        to: null, // ?
+        from: null,
+        to: null,
         targetDay,
-        maxCount: 0, // ?
-        maxCountOfDay: 0, // ?
+        maxCount: 0,
+        maxCountOfDay: 0,
         dayCheckOnly: true
     };
     //@ts-ignore
